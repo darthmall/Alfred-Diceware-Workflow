@@ -16,7 +16,7 @@ def sysrand(suggestions, words, rolls=5, sides=6, **kwargs):
 
 def randorg(suggestions, words, rolls=5, sides=6, apiKey=''):
     conn = HTTPSConnection('api.random.org')
-    
+
     body = json.dumps({
         'jsonrpc': '2.0',
         'id': str(uuid4()),
@@ -42,7 +42,14 @@ def randorg(suggestions, words, rolls=5, sides=6, apiKey=''):
     digits = map(str, data['result']['random']['data'])
 
     for i in range(suggestions):
+        # Base offset into the data for this suggestion
         start = i * words * rolls
+
+        # Build an array of strings. Each string is the key used for a single
+        # word in the diceware wordlist. `rolls` corresponds to the number of
+        # digits in each key. So each key can be extracted by slicing from
+        # the suggestion offset + the word offset within the suggestion. The
+        # word offset is equal to the word's index times the number of rolls.
         yield [''.join(digits[start + (j * rolls):start + ((j + 1) * rolls)]) for j in range(words)]
 
 

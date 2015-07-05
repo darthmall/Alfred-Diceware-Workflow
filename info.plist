@@ -8,7 +8,7 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>16039760-F173-4AB8-9C73-DA7401D5DE23</key>
+		<key>31D9504F-5186-4D5E-894D-F3A55153225B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -21,17 +21,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>1BD657DC-9B4E-4931-9C34-686D802F6A48</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>2C99F6F1-EF16-4CF1-9762-5D05A1FFAA4D</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>16039760-F173-4AB8-9C73-DA7401D5DE23</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -52,44 +41,49 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
+				<key>argumenttype</key>
+				<integer>1</integer>
 				<key>escaping</key>
-				<integer>68</integer>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>password</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Generating passwords</string>
 				<key>script</key>
 				<string>import diceware
 
-API_KEY = ''
+API_KEY=''
+SUGGESTIONS = 5
 
-print diceware.generate()</string>
+print '&lt;?xml version="1.0"?&gt;'
+print '&lt;items&gt;'
+
+for i in range(SUGGESTIONS):
+	password = diceware.generate(apikey=API_KEY)
+	print '&lt;item arg="{0}" autocomplete="{0}"&gt;&lt;title&gt;{0}&lt;/title&gt;&lt;/item&gt;'.format(password)
+
+print '&lt;/items&gt;'</string>
+				<key>subtext</key>
+				<string>Generate passwords using diceware</string>
+				<key>title</key>
+				<string>Diceware Password</string>
 				<key>type</key>
 				<integer>3</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>16039760-F173-4AB8-9C73-DA7401D5DE23</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>keyword</key>
-				<string>password</string>
-				<key>subtext</key>
-				<string>Generate a new password using diceware</string>
-				<key>text</key>
-				<string>Diceware Password</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>2C99F6F1-EF16-4CF1-9762-5D05A1FFAA4D</string>
+			<string>31D9504F-5186-4D5E-894D-F3A55153225B</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -121,17 +115,12 @@ print diceware.generate()</string>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>16039760-F173-4AB8-9C73-DA7401D5DE23</key>
-		<dict>
-			<key>ypos</key>
-			<real>60</real>
-		</dict>
 		<key>1BD657DC-9B4E-4931-9C34-686D802F6A48</key>
 		<dict>
 			<key>ypos</key>
 			<real>180</real>
 		</dict>
-		<key>2C99F6F1-EF16-4CF1-9762-5D05A1FFAA4D</key>
+		<key>31D9504F-5186-4D5E-894D-F3A55153225B</key>
 		<dict>
 			<key>ypos</key>
 			<real>60</real>

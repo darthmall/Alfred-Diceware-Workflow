@@ -1,15 +1,23 @@
 from random import randint
 
-def generate(length=6, apikey=''):
+def sysrand(sides=6, rolls=5):
+	return ''.join(map(str, [randint(1, sides) for i in range(rolls)]))
+
+def randorg(sides=6, rolls=5):
+	raise NotImplemented
+
+def generate(words=6, apikey=''):
 	with open('diceware.wordlist.asc.txt', 'r') as f:
 		wordlist = dict([map(str.strip, line.split()) for line in f if line.strip() != ''])
 
 	password = []
 
-	while len(password) < length:
+	getkey = randorg if apikey else sysrand
+
+	while len(password) < words:
 		key = None
 		while key not in wordlist:
-			key = ''.join(map(str, [randint(1, 6) for i in range(5)]))
+			key = getkey()
 
 		password.append(wordlist[key])
 

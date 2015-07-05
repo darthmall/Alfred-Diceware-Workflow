@@ -9,8 +9,12 @@ be generated using [random.org][] (more secure) or Python's built-in
 Open Alfred, type "password" and you'll be presented with a list of 5
 password suggestions. Selecting one copies it to your clipboard.
 
+![Diceware password with no arguments](img/diceware_password.png)
+
 You can customize the number of words in the password by typing a number
 as an argument after "password". The default number of words is 5.
+
+![Diceware password with optional argument](img/diceware_password_arg.png)
 
 ## Customizing
 You can customize the number of suggestions displayed and the default

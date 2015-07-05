@@ -53,7 +53,7 @@ def randorg(suggestions, words, rolls=5, sides=6, apiKey=''):
         yield [''.join(digits[start + (j * rolls):start + ((j + 1) * rolls)]) for j in range(words)]
 
 
-def generate(suggestions=1, words=6, apikey=''):
+def generate(suggestions=1, words=5, apikey=''):
     with open('diceware.wordlist.asc.txt', 'r') as f:
         wordlist = dict([map(str.strip, line.split()) for line in f if line.strip() != ''])
 

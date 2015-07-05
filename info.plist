@@ -12,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>ECF1BD2C-6DAE-4FAE-91B4-098D88853774</string>
+				<string>B094B84D-5A11-4B59-868E-AF2974BE2823</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -62,11 +62,20 @@
 
 API_KEY=''
 SUGGESTIONS = 5
+WORDS = 5
 
 print '&lt;?xml version="1.0"?&gt;'
 print '&lt;items&gt;'
 
-for password in diceware.generate(SUGGESTIONS, apikey=API_KEY):
+words = "{query}"
+
+
+try:
+	words = int(words)
+except:
+	words = WORDS
+
+for password in diceware.generate(SUGGESTIONS, words, apikey=API_KEY):
 	print((
 		'&lt;item arg="{0}" autocomplete="{0}"&gt;'
 		'&lt;title&gt;{0}&lt;/title&gt;'
@@ -90,10 +99,27 @@ print '&lt;/items&gt;'</string>
 			<integer>0</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>Password copied to clipboard</string>
+				<key>title</key>
+				<string>Diceware Password</string>
+			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>ECF1BD2C-6DAE-4FAE-91B4-098D88853774</string>
+			<string>B094B84D-5A11-4B59-868E-AF2974BE2823</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -127,7 +153,7 @@ print '&lt;/items&gt;'</string>
 			<key>ypos</key>
 			<real>60</real>
 		</dict>
-		<key>ECF1BD2C-6DAE-4FAE-91B4-098D88853774</key>
+		<key>B094B84D-5A11-4B59-868E-AF2974BE2823</key>
 		<dict>
 			<key>ypos</key>
 			<real>60</real>

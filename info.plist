@@ -66,8 +66,7 @@ SUGGESTIONS = 5
 print '&lt;?xml version="1.0"?&gt;'
 print '&lt;items&gt;'
 
-for i in range(SUGGESTIONS):
-	password = diceware.generate(apikey=API_KEY)
+for password in diceware.generate(SUGGESTIONS, apikey=API_KEY):
 	print((
 		'&lt;item arg="{0}" autocomplete="{0}"&gt;'
 		'&lt;title&gt;{0}&lt;/title&gt;'

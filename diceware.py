@@ -6,19 +6,20 @@ def sysrand(sides=6, rolls=5):
 def randorg(sides=6, rolls=5):
 	raise NotImplemented
 
-def generate(words=6, apikey=''):
+def generate(suggestions=1, words=6, apikey=''):
 	with open('diceware.wordlist.asc.txt', 'r') as f:
 		wordlist = dict([map(str.strip, line.split()) for line in f if line.strip() != ''])
 
-	password = []
+	for i in range(suggestions):
+		password = []
 
-	getkey = randorg if apikey else sysrand
+		getkey = randorg if apikey else sysrand
 
-	while len(password) < words:
-		key = None
-		while key not in wordlist:
-			key = getkey()
+		while len(password) < words:
+			key = None
+			while key not in wordlist:
+				key = getkey()
 
-		password.append(wordlist[key])
+			password.append(wordlist[key])
 
-	return ' '.join(password)
+		yield ' '.join(password)

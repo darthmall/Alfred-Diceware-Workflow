@@ -31,7 +31,7 @@
 	<key>createdby</key>
 	<string>W. Evan Sheehan</string>
 	<key>description</key>
-	<string>Generate a password</string>
+	<string>Generate a diceware password</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -68,7 +68,10 @@ print '&lt;items&gt;'
 
 for i in range(SUGGESTIONS):
 	password = diceware.generate(apikey=API_KEY)
-	print '&lt;item arg="{0}" autocomplete="{0}"&gt;&lt;title&gt;{0}&lt;/title&gt;&lt;/item&gt;'.format(password)
+	print((
+		'&lt;item arg="{0}" autocomplete="{0}"&gt;'
+		'&lt;title&gt;{0}&lt;/title&gt;'
+		'&lt;/item&gt;').format(password))
 
 print '&lt;/items&gt;'</string>
 				<key>subtext</key>
